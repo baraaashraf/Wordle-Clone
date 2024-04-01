@@ -1,15 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap");
+@font-face {
+  font-family: "karnak";
+  src: url("../assets/karnak.ttf");
+}
+
+:root {
+  --green: #538d4e;
+  --yellow: #b59f3b;
+  --dark: #121213;
+  --darkGrey: #3a3a3c;
+}
+
+.karnak {
+  font-family: "karnak";
+}
 body {
   text-align: center;
   font-size: 1em;
   font-family: verdana;
   margin: 0;
+  background-color: var(--dark);
+  font-family: "Libre Franklin", sans-serif;
 }
 h1 {
-  font-size: 1.2em;
-  padding: 20px 0;
-  border-bottom: 1px solid #eee;
+  font-size: 2.2em;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--darkGrey);
   margin: 0 0 30px 0;
-  color: #333;
+  color: #fff;
 }
 /* rows */
 .row {
@@ -21,13 +39,14 @@ h1 {
   display: block;
   width: 60px;
   height: 60px;
-  border: 1px solid #bbb;
-  margin: 4px;
+  border: 2px solid var(--darkGrey);
+  margin: 2px;
   text-align: center;
   line-height: 60px;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 2.5em;
+  font-size: 2em;
+  color: #fff;
 }
 .row > div.green {
   --background: #538d4e;
@@ -45,50 +64,52 @@ h1 {
   animation: flip 0.5s ease forwards;
 }
 .row > div:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.row > div:nth-child(3) {
   animation-delay: 0.4s;
 }
-.row > div:nth-child(4) {
+.row > div:nth-child(3) {
   animation-delay: 0.6s;
 }
-.row > div:nth-child(5) {
+.row > div:nth-child(4) {
   animation-delay: 0.8s;
 }
+.row > div:nth-child(5) {
+  animation-delay: 1s;
+}
 .row.current > div.filled {
-  animation: bounce 0.2s ease-in-out forwards;
+  animation: bounce 0.1s ease-in-out forwards;
 }
 .keypad {
-  max-width: 500px;
+  max-width: 450px;
   margin: 20px auto;
 }
 .keypad > div {
-  margin: 5px;
-  width: 40px;
-  height: 50px;
-  background: #eee;
+  margin: 3px;
+  width: 43px;
+  height: 58px;
+  background: #818384;
   display: inline-block;
   border-radius: 6px;
-  line-height: 50px;
+  line-height: 60px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
 }
 .keypad > div.green {
-  background: #5ac85a;
+  background: #538d4e;
   color: #fff;
   transition: all 0.3s ease-in;
 }
 .keypad > div.yellow {
-  background: #e2cc68;
+  background: #b59f3b;
   color: #fff;
   transition: all 0.3s ease-in;
 }
 .keypad > div.grey {
-  background: #a1a1a1;
+  background: #3a3a3c;
   color: #fff;
   transition: all 0.3s ease-in;
 }
 .modal {
-  background: rgba(255,255,255,0.7);
   position: fixed;
   width: 100%;
   height: 100%;
@@ -96,12 +117,12 @@ h1 {
   left: 0;
 }
 .modal div {
-  max-width: 480px;
+  max-width: 80px;
   background: #fff;
-  padding: 40px;
+  padding: 10px;
   border-radius: 10px;
-  margin: 10% auto;
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  margin: 70px auto;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 }
 .modal .solution {
   color: #ff004c;
@@ -115,12 +136,12 @@ h1 {
 @keyframes flip {
   0% {
     transform: rotateX(0);
-    background: #fff;
+    background: #333;
     border-color: #333;
   }
   45% {
     transform: rotateX(90deg);
-    background: white;
+    background: 333;
     border-color: #333;
   }
   55% {
@@ -137,15 +158,15 @@ h1 {
 }
 
 @keyframes bounce {
-  0% { 
+  0% {
     transform: scale(1);
-    border-color: #ddd;
+    border-color: #444;
   }
-  50% { 
+  50% {
     transform: scale(1.2);
   }
   100% {
     transform: scale(1);
-    border-color: #333;
+    border-color: #565758;
   }
 }

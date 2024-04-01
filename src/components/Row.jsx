@@ -22,7 +22,9 @@ const Row = ({ guess, currentGuess }) => {
             {l}
           </div>
         ))}
-        {[...Array(5-letters.length)]}
+        {[...Array(5 - letters.length)].map((_, i) => (
+          <div key={i} className="filled"></div>
+        ))}
       </div>
     );
   }
