@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
 import Wordle from "./components/Wordle";
-import Keypad from "./components/Keypad";
+import solutions from "./data/solutions.json";
+
 function App() {
   const [solution, setSolution] = useState(null);
   useEffect(() => {
-    fetch("http://localhost:3001/solutions")
-      .then((res) => res.json())
-      .then((json) => {
-        const randomSolution = json[Math.floor(Math.random() * json.length)];
-        setSolution(randomSolution.word);
-        console.log(randomSolution.word);
-      });
-  }, [setSolution]);
+    console.log(solutions)
+    const randomSolution = solutions.words[Math.floor(Math.random() * solutions.words.length)];
+    setSolution(randomSolution.word);
+    console.log(randomSolution.word);
+  }, []);
   return (
     <div className="App">
       <h1 className="karnak">Wordle (clone)</h1>
