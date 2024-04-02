@@ -6,7 +6,7 @@ import Modal from "./Modal";
 import { useState } from "react";
 
 const Wordle = ({ solution }) => {
-  const { currentGuess, handleKeyUp, guesses, turn, isCorrect, usedKeys } =
+  const { currentGuess, handleKeyUp, guesses, turn, isCorrect, usedKeys,wordNotInList } =
     useWordle(solution);
   const [showModal, setShowModal] = useState(true);
 
@@ -36,7 +36,7 @@ const Wordle = ({ solution }) => {
       <Grid currentGuess={currentGuess} guesses={guesses} turn={turn} />
       <Keypad usedKeys={usedKeys} />
       {showModal && (
-        <Modal isCorrect={isCorrect} turn={turn} solution={solution} />
+        <Modal isCorrect={isCorrect} turn={turn} solution={solution} wordNotInList={wordNotInList} />
       )}
     </>
   );

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import solutions from "../data/solutions.json";
 
 const useWordle = (solution) => {
   const [turn, setTurn] = useState(0);
@@ -7,6 +8,7 @@ const useWordle = (solution) => {
   const [history, setHistory] = useState([]);
   const [isCorrect, setisCorrect] = useState(false);
   const [usedKeys, setUsedKeys] = useState({});
+  const [wordNotInList, setWordNotInList] = useState(false);
 
   const formatGuess = () => {
     let solutionArray = [...solution];
@@ -76,8 +78,14 @@ const useWordle = (solution) => {
   };
 
   const handleKeyUp = ({ key }) => {
+    setWordNotInList(false)
     if (key === "Enter") {
       if (turn > 5) {
+        return;
+      }
+      if (!solutions.words.some((obj) => obj.word === currentGuess)) {
+        setWordNotInList(true)
+        console.log("Word Not in List");
         return;
       }
       if (history.includes(currentGuess)) {
@@ -114,6 +122,7 @@ const useWordle = (solution) => {
     isCorrect,
     handleKeyUp,
     usedKeys,
+    wordNotInList
   };
 };
 
