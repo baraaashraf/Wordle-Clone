@@ -3,30 +3,50 @@ export default function Keypad({ usedKeys, handleKeyUp }) {
     const smallKey = key.toLowerCase();
     return usedKeys[smallKey];
   };
+
+  const Rows = {
+    firstRow: ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
+    secondRow: ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
+    thirdRow: ["Enter", "z", "x", "c", "v", "b", "n", "m", "⌫"],
+  };
   return (
     <div className="keypad">
       <div>
-        {["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"].map((key) => (
-          <div className={`keypad-button ${getColor(key)}`} key={key} onClick={() => handleKeyUp({ key })}>
-            {key}
+        {Rows.firstRow.map((key) => (
+          <div
+            className={`keypad-button ${getColor(key)}`}
+            key={key}
+            onClick={() => handleKeyUp({ key })}
+          >
+            {key.toUpperCase()}
           </div>
         ))}
       </div>
       <div>
-        {["a", "s", "d", "f", "g", "h", "j", "k", "l"].map((key) => (
-          <div className={`keypad-button ${getColor(key)}`} key={key} onClick={() => handleKeyUp({ key })}>
-            {key}
+        {Rows.secondRow.map((key) => (
+          <div
+            className={`keypad-button ${getColor(key)}`}
+            key={key}
+            onClick={() => handleKeyUp({ key })}
+          >
+            {key.toUpperCase()}
           </div>
         ))}
       </div>
       <div>
-        {["Backspace", "z", "x", "c", "v", "b", "n", "m", "Enter"].map(
-          (key) => (
-            <div className={key === "Enter" || key === "Backspace"? "keypad-special" : `keypad-button ${getColor(key)}`} key={key} onClick={() => handleKeyUp({ key })}>
-              {key}
-            </div>
-          )
-        )}
+        {Rows.thirdRow.map((key) => (
+          <div
+            className={
+              key === "Enter" || key === "Backspace"
+                ? "keypad-special"
+                : `keypad-button ${getColor(key)}`
+            }
+            key={key}
+            onClick={() => handleKeyUp({ key })}
+          >
+            {key.toUpperCase()}
+          </div>
+        ))}
       </div>
     </div>
   );

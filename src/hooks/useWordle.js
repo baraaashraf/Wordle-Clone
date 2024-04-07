@@ -66,7 +66,7 @@ const useWordle = (solution) => {
           newKeys[l.key] = "yellow";
           return;
         }
-        if (l.color === "grey" && currentColor !== ("green" || "yellow")) {
+        if (l.color === "grey" && currentColor !== ("green" && "yellow")) {
           newKeys[l.key] = "grey";
           return;
         }
@@ -101,7 +101,7 @@ const useWordle = (solution) => {
       const formatted = formatGuess();
       addNewGuess(formatted);
     }
-    if (key === "Backspace") {
+    if (key === "⌫" || key === "Backspace") {
       setCurrentGuess((prev) => {
         return prev.slice(0, -1);
       });
@@ -110,7 +110,7 @@ const useWordle = (solution) => {
     if (/^[A-Za-z]$/.test(key)) {
       if (currentGuess.length < 5) {
         setCurrentGuess((prev) => {
-          return prev + key.toLowerCase();
+          return prev + key
         });
       }
     }

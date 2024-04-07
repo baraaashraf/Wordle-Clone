@@ -81,7 +81,7 @@ h1 {
 .keypad {
   margin: 20px auto;
 }
-.keypad-button{
+.keypad-button {
   margin: 3px;
   width: 43px;
   height: 58px;
@@ -93,17 +93,24 @@ h1 {
   font-weight: 700;
   color: #fff;
 }
-.keypad-special{
+.keypad-special {
   margin: 3px;
-  width: 110px;
+  width: 65.4px;
   height: 58px;
   background: #818384;
   display: inline-block;
   border-radius: 6px;
-  line-height: 60px;
-  font-size: 20px;
+  line-height: 62px;
+  font-size: 12px;
   font-weight: 700;
   color: #fff;
+}
+.keypad-button:hover {
+  cursor: pointer;
+}
+
+.keypad-special:hover {
+  cursor: pointer;
 }
 
 .keypad > div > div.green {
@@ -142,6 +149,32 @@ h1 {
   font-size: 0.8em;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+@media (max-width: 490px) {
+  .keypad-button {
+    width: 38px;
+  }
+  .keypad-special {
+    width: 58px;
+  }
+}
+
+@media (max-width: 444px) {
+  .keypad-button {
+    width: 31px;
+  }
+  .keypad-special {
+    width: 46.6px;
+  }
+}
+@media (max-width: 370px) {
+  .keypad-button {
+    width: 27px;
+  }
+  .keypad-special {
+    width: 41.4px;
+  }
 }
 
 /* keyframe animations */
