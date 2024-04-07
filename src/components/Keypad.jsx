@@ -1,23 +1,15 @@
 import React, { useEffect, useState } from "react";
 import JSONletters from "../data/letter.json";
 
-export default function Keypad({ usedKeys }) {
+export default function Keypad({ usedKeys, handleKeyUp }) {
   const [letters, setLetters] = useState(null);
 
   useEffect(() => {
-    console.log(JSONletters.letters);
     setLetters(JSONletters.letters);
   }, []);
 
-  const handleClick = (key) => {
-    console.log("Clicked key:", key);
-  };
-
-  
-
   return (
     <div className="keypad"               
-    onClick={console.log("dsj")}
     >
       {letters &&
         letters.map((l) => {
@@ -27,6 +19,7 @@ export default function Keypad({ usedKeys }) {
             <div
               key={l.key}
               className={color}
+              onClick={() => handleKeyUp(l)}
             >
               {l.key}
             </div>
