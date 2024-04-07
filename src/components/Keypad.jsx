@@ -1,30 +1,33 @@
-import React, { useEffect, useState } from "react";
-import JSONletters from "../data/letter.json";
-
 export default function Keypad({ usedKeys, handleKeyUp }) {
-  const [letters, setLetters] = useState(null);
-
-  useEffect(() => {
-    setLetters(JSONletters.letters);
-  }, []);
-
+  const getColor = (key) => {
+    const smallKey = key.toLowerCase();
+    return usedKeys[smallKey];
+  };
   return (
-    <div className="keypad"               
-    >
-      {letters &&
-        letters.map((l) => {
-          const smallKey = l.key.toLowerCase();
-          const color = usedKeys[smallKey];
-          return (
-            <div
-              key={l.key}
-              className={color}
-              onClick={() => handleKeyUp(l)}
-            >
-              {l.key}
+    <div className="keypad">
+      <div>
+        {["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"].map((key) => (
+          <div className={`keypad-button ${getColor(key)}`} key={key} onClick={() => handleKeyUp({ key })}>
+            {key}
+          </div>
+        ))}
+      </div>
+      <div>
+        {["a", "s", "d", "f", "g", "h", "j", "k", "l"].map((key) => (
+          <div className={`keypad-button ${getColor(key)}`} key={key} onClick={() => handleKeyUp({ key })}>
+            {key}
+          </div>
+        ))}
+      </div>
+      <div>
+        {["Backspace", "z", "x", "c", "v", "b", "n", "m", "Enter"].map(
+          (key) => (
+            <div className={key === "Enter" || key === "Backspace"? "keypad-special" : `keypad-button ${getColor(key)}`} key={key} onClick={() => handleKeyUp({ key })}>
+              {key}
             </div>
-          );
-        })}
+          )
+        )}
+      </div>
     </div>
   );
 }

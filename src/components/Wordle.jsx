@@ -8,7 +8,7 @@ import { useState } from "react";
 const Wordle = ({ solution }) => {
   const { currentGuess, handleKeyUp, guesses, turn, isCorrect, usedKeys,wordNotInList } =
     useWordle(solution);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(true);
 
   useEffect(() => {
     window.addEventListener("keyup", handleKeyUp);
@@ -18,9 +18,6 @@ const Wordle = ({ solution }) => {
         setShowModal(true)
       },2000)
       window.removeEventListener("keyup", handleKeyUp);
-    }
-    if (wordNotInList) {
-      setShowModal(true)
     }
     if (turn > 5) {
       setTimeout(()=>{

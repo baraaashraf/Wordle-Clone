@@ -83,6 +83,11 @@ const useWordle = (solution) => {
       if (turn > 5) {
         return;
       }
+      if (currentGuess.length !== 5) {
+        console.log("Word must be 5 characters long");
+        return;
+      }
+
       if (!solutions.words.some((obj) => obj.word === currentGuess)) {
         setWordNotInList(true);
         console.log("Word Not in List");
@@ -90,10 +95,6 @@ const useWordle = (solution) => {
       }
       if (history.includes(currentGuess)) {
         console.log("word already tried");
-        return;
-      }
-      if (currentGuess.length !== 5) {
-        console.log("word must be 5 chara long");
         return;
       }
 
