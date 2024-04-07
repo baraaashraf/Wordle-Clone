@@ -78,22 +78,23 @@ const useWordle = (solution) => {
   };
 
   const handleKeyUp = ({ key }) => {
-    setWordNotInList(false)
+    setWordNotInList(false);
     if (key === "Enter") {
       if (turn > 5) {
         return;
       }
+      if (currentGuess.length !== 5) {
+        console.log("Word must be 5 characters long");
+        return;
+      }
+
       if (!solutions.words.some((obj) => obj.word === currentGuess)) {
-        setWordNotInList(true)
+        setWordNotInList(true);
         console.log("Word Not in List");
         return;
       }
       if (history.includes(currentGuess)) {
         console.log("word already tried");
-        return;
-      }
-      if (currentGuess.length !== 5) {
-        console.log("word must be 5 chara long");
         return;
       }
 
@@ -109,7 +110,7 @@ const useWordle = (solution) => {
     if (/^[A-Za-z]$/.test(key)) {
       if (currentGuess.length < 5) {
         setCurrentGuess((prev) => {
-          return prev + key;
+          return prev + key.toLowerCase();
         });
       }
     }
@@ -122,7 +123,7 @@ const useWordle = (solution) => {
     isCorrect,
     handleKeyUp,
     usedKeys,
-    wordNotInList
+    wordNotInList,
   };
 };
 
